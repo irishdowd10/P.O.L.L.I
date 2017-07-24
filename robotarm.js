@@ -1,8 +1,4 @@
-/*
- * Leap Motion robot arm manipulator
- * Written by Yu Jiang Tham, 2013
- * And re-written in 2015!
- */
+
 
 /*
  * Variables
