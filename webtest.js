@@ -3,12 +3,13 @@ var app = require('http').createServer(handler)
   , io = require('socket.io').listen(app)
   , fs = require('fs')
   , five = require("johnny-five"),
-  board,servo0,servo1,servo2,servo3,servo4;
+  board,servo0,servo1,servo2,servo3,servo4,piezo;
 
 board = new five.Board();
 
 // on board ready
 board.on("ready", function() {
+  piezo = new five.Piezo(8);
 
   // setup a stanard servo, center at start
   servo0 = new five.Servo({
@@ -47,6 +48,10 @@ board.on("ready", function() {
   });
 
 });
+
+  board.repl.inject({
+    piezo: piezo
+  });
 
 // make web server listen on port 80
 app.listen(4200);
@@ -104,6 +109,35 @@ io.sockets.on('connection', function (socket) {
     console.log(data);
     if(board.isReady){ servo4.to(data.pos);  }
   });
+
+  socket.on('piezo', function (){
+    if(board.isReady){
+      piezo.play({
+        song: [
+          ["C4", 1 / 4],
+          ["D4", 1 / 4],
+          ["F4", 1 / 4],
+          ["D4", 1 / 4],
+          ["A4", 1 / 4],
+          [null, 1 / 4],
+          ["A4", 1],
+          ["G4", 1],
+          [null, 1 / 2],
+          ["C4", 1 / 4],
+          ["D4", 1 / 4],
+          ["F4", 1 / 4],
+          ["D4", 1 / 4],
+          ["G4", 1 / 4],
+          [null, 1 / 4],
+          ["G4", 1],
+          ["F4", 1],
+          [null, 1 / 2]
+        ],
+        tempo: 100
+      });
+    }
+  })
+
 
 
 });
