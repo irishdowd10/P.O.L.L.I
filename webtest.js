@@ -8,6 +8,10 @@ var app = require('http').createServer(handler)
 board = new five.Board();
 
 servo0Data = [];
+servo1Data = [];
+servo2Data = [];
+servo3Data = [];
+servo4Data = [];
 
 // on board ready
 board.on("ready", function() {
@@ -96,22 +100,30 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('servo1', function (data) {
     console.log(data);
-    if(board.isReady){ servo1.to(data.pos);  }
+    if(board.isReady){ servo1.to(data.pos);
+      servo1Data.push(data);
+      console.log(servo0Data[0]  }
   });
 
   socket.on('servo2', function (data) {
     console.log(data);
-    if(board.isReady){ servo2.to(data.pos);  }
+    if(board.isReady){ servo2.to(data.pos);
+      servo2Data.push(data);
+      console.log(servo0Data[0]  }
   });
 
   socket.on('servo3', function (data) {
     console.log(data);
-    if(board.isReady){ servo3.to(data.pos);  }
+    if(board.isReady){ servo3.to(data.pos);
+      servo3Data.push(data);
+      console.log(servo0Data[0]  }
   });
 
   socket.on('servo4', function (data) {
     console.log(data);
-    if(board.isReady){ servo4.to(data.pos);  }
+    if(board.isReady){ servo4.to(data.pos);
+      servo4Data.push(data);
+      console.log(servo0Data[0]  }
   });
 
   socket.on('piezo', function (){
