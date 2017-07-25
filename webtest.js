@@ -1,10 +1,15 @@
 // initialize everything, web server, socket.io, filesystem, johnny-five
-var app = require('http').createServer(handler)
-  , io = require('socket.io').listen(app)
-  , fs = require('fs')
-  , five = require("johnny-five"),
+var express = require('express'),
+  app = express(),
+  path = require('path'),
+  http = require('http'),
+  server = http.createServer(app).listen(4200),
+  io = require('socket.io').listen(server),
+  fs = require('fs'),
+  five = require("johnny-five"),
   board,servo0,servo1,servo2,servo3,servo4,piezo;
 
+app.use(express.static(path.join(__dirname, 'public')));
 board = new five.Board();
 
 servo0Data = [];
@@ -60,7 +65,8 @@ board.on("ready", function() {
   });
 
 // make web server listen on chosen port
-app.listen(4200);
+
+// app.listen(4200);
 
 
 // handle web server
@@ -102,28 +108,28 @@ io.sockets.on('connection', function (socket) {
     console.log(data);
     if(board.isReady){ servo1.to(data.pos);
       servo1Data.push(data);
-      console.log(servo0Data[0]  }
+      console.log(servo0Data[0]) }
   });
 
   socket.on('servo2', function (data) {
     console.log(data);
     if(board.isReady){ servo2.to(data.pos);
       servo2Data.push(data);
-      console.log(servo0Data[0]  }
+      console.log(servo0Data[0])  }
   });
 
   socket.on('servo3', function (data) {
     console.log(data);
     if(board.isReady){ servo3.to(data.pos);
       servo3Data.push(data);
-      console.log(servo0Data[0]  }
+      console.log(servo0Data[0])  }
   });
 
   socket.on('servo4', function (data) {
     console.log(data);
     if(board.isReady){ servo4.to(data.pos);
       servo4Data.push(data);
-      console.log(servo0Data[0]  }
+      console.log(servo0Data[0])  }
   });
 
   socket.on('piezo', function (){
