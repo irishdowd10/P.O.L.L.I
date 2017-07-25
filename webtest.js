@@ -7,6 +7,8 @@ var app = require('http').createServer(handler)
 
 board = new five.Board();
 
+servo0Data = [];
+
 // on board ready
 board.on("ready", function() {
   piezo = new five.Piezo(8);
@@ -87,7 +89,9 @@ io.sockets.on('connection', function (socket) {
   // if servo message received
   socket.on('servo0', function (data) {
     console.log(data);
-    if(board.isReady){ servo0.to(data.pos);  }
+    if(board.isReady){ servo0.to(data.pos);
+    servo0Data.push(data);
+    console.log(servo0Data[0])}
   });
 
   socket.on('servo1', function (data) {
