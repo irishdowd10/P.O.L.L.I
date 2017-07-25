@@ -1,0 +1,22 @@
+{
+  "name": "P.O.L.L.I",
+  "description": "Robotic Arm",
+  "main": "index.js",
+  "authors": [
+    "Isabella Abatgis, Daniel Lopez, John Dowd, Pete Lazuran"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "moment": "^2.18.1"
+  }
+}
