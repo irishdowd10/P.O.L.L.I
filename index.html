@@ -38,108 +38,36 @@
       <h3>Created by John, Pete, Daniel, and Isabella</h3>
     </section>
     <div class="container">
-
     <div class="row">
       <div class="col-md-4">
       <h4>Base to position:</h4>
         <div class="btn-group" data-toggle="buttons">
-            <label class="servobtn btn btn-primary">
-              <input type="radio" name="servo0" id="servo1" value="0"> 0
-            </label>
-            <label class="servobtn btn btn-primary">
-              <input type="radio" name="servo0" id="servo2" value="45"> 45
-            </label>
-            <label class="servobtn btn btn-primary">
-              <input type="radio" name="servo0" id="servo3" value="90"> 90
-            </label>
-            <label class="servobtn btn btn-primary">
-              <input type="radio" name="servo0" id="servo4" value="135"> 135
-            </label>
-            <label class="servobtn btn btn-primary">
-              <input type="radio" name="servo0" id="servo5" value="180"> 180
-            </label>
+          <input class="servobtn" type="range"  min="1" max="179" value="90" name="servo0"/>
         </div>
       </div>
       <div class="col-md-4">
       <h4>Shoulder to position:</h4>
         <div class="btn-group" data-toggle="buttons">
-            <label class="servobtn1 btn btn-primary">
-              <input type="radio" name="servo1" id="servo1" value="0"> 0
-            </label>
-            <label class="servobtn1 btn btn-primary">
-              <input type="radio" name="servo1" id="servo2" value="45"> 45
-            </label>
-            <label class="servobtn1 btn btn-primary">
-              <input type="radio" name="servo1" id="servo3" value="90"> 90
-            </label>
-            <label class="servobtn1 btn btn-primary">
-              <input type="radio" name="servo1" id="servo4" value="135"> 135
-            </label>
-            <label class="servobtn1 btn btn-primary">
-              <input type="radio" name="servo1" id="servo5" value="180"> 180
-            </label>
+          <input class="servobtn1" type="range"  min="15" max="165" value="90" name="servo1"/>
         </div>
       </div>
       <div class="col-md-4">
       <h4>Elbow to position:</h4>
         <div class="btn-group" data-toggle="buttons">
-            <label class="servobtn2 btn btn-primary">
-              <input type="radio" name="servo2" id="servo1" value="0"> 0
-            </label>
-            <label class="servobtn2 btn btn-primary">
-              <input type="radio" name="servo2" id="servo2" value="45"> 45
-            </label>
-            <label class="servobtn2 btn btn-primary">
-              <input type="radio" name="servo2" id="servo3" value="90"> 90
-            </label>
-            <label class="servobtn2 btn btn-primary">
-              <input type="radio" name="servo2" id="servo4" value="135"> 135
-            </label>
-            <label class="servobtn2 btn btn-primary">
-              <input type="radio" name="servo2" id="servo5" value="180"> 180
-            </label>
+          <input class="servobtn2" type="range"  min="15" max="165" value="90" name="servo2"/>
         </div>
       </div>
       <div class="col-md-4">
       <h4>Wrist to position:</h4>
         <div class="btn-group" data-toggle="buttons">
-            <label class="servobtn3 btn btn-primary">
-              <input type="radio" name="servo3" id="servo1" value="0"> 0
-            </label>
-            <label class="servobtn3 btn btn-primary">
-              <input type="radio" name="servo3" id="servo2" value="45"> 45
-            </label>
-            <label class="servobtn3 btn btn-primary">
-              <input type="radio" name="servo3" id="servo3" value="90"> 90
-            </label>
-            <label class="servobtn3 btn btn-primary">
-              <input type="radio" name="servo3" id="servo4" value="135"> 135
-            </label>
-            <label class="servobtn3 btn btn-primary">
-              <input type="radio" name="servo3" id="servo5" value="180"> 180
-            </label>
+          <input class="servobtn3" type="range"  min="20" max="160" value="90" name="servo3"/>
         </div>
       </div>
       <div class="col-md-4">
       <h4>Claw to position:</h4>
         <div class="btn-group" data-toggle="buttons">
-            <label class="servobtn4 btn btn-primary">
-              <input type="radio" name="servo4" id="servo1" value="0"> 0
-            </label>
-            <label class="servobtn4 btn btn-primary">
-              <input type="radio" name="servo4" id="servo2" value="45"> 45
-            </label>
-            <label class="servobtn4 btn btn-primary">
-              <input type="radio" name="servo4" id="servo3" value="90"> 90
-            </label>
-            <label class="servobtn4 btn btn-primary">
-              <input type="radio" name="servo4" id="servo4" value="135"> 135
-            </label>
-            <label class="servobtn4 btn btn-primary">
-              <input type="radio" name="servo4" id="servo5" value="180"> 180
-            </label>
+          <input class="servobtn4" type="range"  min="1" max="50" value="25" name="servo4"/>
         </div>
-        <input type="range"  min="1" max="50" value="25" name="servo4" id="servo3 "/>
       </div>
     </div>
     </div>
@@ -153,43 +81,27 @@
 
       var socket = io.connect('http://localhost');
 
-      // socket.on('news', function (data) {
-      //   console.log(data);
-      // });
-
-      // socket.on('sensor', function (data) {
-      //   console.log("Incoming sensor data:",data.raw);
-      //   $("#inData").append(data.raw+"\r");
-      //   $("#inData").animate({scrollTop:$("#inData")[0].scrollHeight - $("#inData").height()},200);
-      //
-      // });
-
-      $('.servobtn').button();
-      $('.servobtn1').button();
-      $('.servobtn2').button();
-      $('.servobtn3').button();
-      $('.servobtn4').button();
-
       $('.servobtn').on('change',function(){
-          console.log("Setting Servo Pos:",$('input[name=servo0]:checked').val())
-          socket.emit('servo0',{pos:$('input[name=servo0]:checked').val()});
+          console.log("Setting Servo Pos:",$('input[name=servo0]').val())
+          socket.emit('servo0',{pos:$('input[name=servo0]').val()});
       });
       $('.servobtn1').on('change',function(){
-          console.log("Setting Servo Pos:",$('input[name=servo1]:checked').val())
-          socket.emit('servo1',{pos:$('input[name=servo1]:checked').val()});
+          console.log("Setting Servo Pos:",$('input[name=servo1]').val())
+          socket.emit('servo1',{pos:$('input[name=servo1]').val()});
       });
       $('.servobtn2').on('change',function(){
-          console.log("Setting Servo Pos:",$('input[name=servo2]:checked').val())
-          socket.emit('servo2',{pos:$('input[name=servo2]:checked').val()});
+          console.log("Setting Servo Pos:",$('input[name=servo2]').val())
+          socket.emit('servo2',{pos:$('input[name=servo2]').val()});
       });
       $('.servobtn3').on('change',function(){
-          console.log("Setting Servo Pos:",$('input[name=servo3]:checked').val())
-          socket.emit('servo3',{pos:$('input[name=servo3]:checked').val()});
+          console.log("Setting Servo Pos:",$('input[name=servo3]').val())
+          socket.emit('servo3',{pos:$('input[name=servo3]').val()});
       });
       $('.servobtn4').on('change',function(){
-          console.log("Setting Servo Pos:",$('input[name=servo4]:checked').val())
-          socket.emit('servo4',{pos:$('input[name=servo4]:checked').val()});
+          console.log("Setting Servo Pos:",$('input[name=servo4]').val())
+          socket.emit('servo4',{pos:$('input[name=servo4]').val()});
       });
+
 
     </script>
     </body>
