@@ -1,0 +1,226 @@
+.navigate {
+  background-color: #3A2E39;
+  width: 100%;
+  height: 130px;
+}
+
+.navigate ul {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.navigate ul li {
+  margin: 20px;
+  list-style-type: none;
+  text-align: center;
+}
+
+.navigate ul li a {
+  font-size: 20px;
+  text-decoration: none;
+  width: 100px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  color: #09FDF4;
+  text-shadow: 2px 2px 10px #0F7C87;
+}
+
+section ul li a:hover {
+  text-shadow: 2px 2px 10px #0F7C87, 2px 2px 2px #0F7C87, -2px -2px 2px #0F7C87, -2px 2px 2px #0F7C87, 2px -2px 2px #0F7C87, 3px 3px 8px #0F7C87, -3px -3px 8px #0f7C87, -3px 3px 8px #0f7C87, 3px -3px 8px #0f7C87;
+}
+
+.hero {
+  background-color: #3A2E39;
+  height: calc(100vh - 130px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h1 {
+  text-align: center;
+  font-size: 250px;
+  color: #09fdf4;
+  animation: glow 5s linear both infinite;
+  animation-direction: alternate;
+  margin: 0;
+}
+
+.hero h3 {
+  text-align: center;
+  font-size: 50px;
+  color: #EBE8C3;
+  font-weight: lighter;
+}
+
+.hero-small {
+  background-color: #3A2E39;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.hero-small h1 {
+  font-size: 150px;
+  color: #09fdf4;
+  animation: glow 5s linear both infinite;
+  animation-direction: alternate;
+  margin: 0;
+}
+
+.hero-small h3 {
+  font-size: 20px;
+  color: #EBE8C3;
+  font-weight: lighter;
+  margin: 0;
+}
+
+.controller h2 {
+  color: #E19E29;
+}
+
+.controller p {
+  color: #EBE8C3;
+}
+
+.hardware {
+  padding: 0px 100px;
+  color: #EBE8C3;
+  display: flex;
+  flex-direction: column;
+}
+
+.hardware h2 {
+  font-size: 70px;
+  color: #ED665A;
+  margin-bottom: 15px;
+}
+
+.hardware p {
+  margin-bottom: 80px;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 2px 2px 10px #0F7C87, 2px 2px 2px #0F7C87, -2px -2px 2px #0F7C87, -2px 2px 2px #0F7C87, 2px -2px 2px #0F7C87, 3px 3px 8px #0F7C87, -3px -3px 8px #0f7C87, -3px 3px 8px #0f7C87, 3px -3px 8px #0f7C87;
+  }
+  100% {
+    text-shadow: 2px 2px 10px #0F7C87, 2px 2px 2px #0F7C87, -2px -2px 2px #0F7C87, -2px 2px 2px #0F7C87, 2px -2px 2px #0F7C87, 3px 3px 8px #0F7C87, -3px -3px 8px #0f7C87, -3px 3px 8px #0f7C87, 3px -3px 8px #0f7C87, 5px 5px 10px #0f7C87, -5px -5px 10px #0f7C87, -5px 5px 10px #0f7C87, 5px -5px 10px #0f7C87, 15px 15px 35px #0f7C87, -15px -15px 35px #0f7C87, -15px 15px 35px #0f7C87, 15px -15px 35px #0f7C87;
+  }
+}
+
+.product {
+  width: 100%;
+  display: flex;
+  margin-bottom: 30px;
+  justify-content: space-between;
+}
+
+.product-image {
+  max-width: 800px;
+}
+
+.product-image img {
+  width: 100%;
+}
+
+.product-specs {
+  align-self: center;
+  margin-left: 70px;
+}
+
+.product-specs h3 {
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+
+.product-specs li {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.scroll-top {
+  display: block;
+  color: #09fdf4;
+  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+}
+
+.scroll-top:hover {
+  color: #09fdf4;
+  text-decoration: none;
+  text-shadow: 2px 2px 10px #0F7C87, 2px 2px 2px #0F7C87, -2px -2px 2px #0F7C87, -2px 2px 2px #0F7C87, 2px -2px 2px #0F7C87;
+}
+
+.developers {
+  padding: 0px 100px;
+  padding-bottom: 100px;
+}
+
+.developers h2 {
+  font-size: 70px;
+  color: #ED665A;
+  margin-bottom: 15px;
+}
+
+.gradient {
+  background: #0F7C87;
+  background: -webkit-linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: -o-linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: -moz-linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  padding-bottom: 100px;
+}
+
+.dev-pic {
+  width: 100%;
+}
+
+input[type="text"] {
+  pointer-events: none;
+  border: none;
+  text-align: center;
+}
+
+.servobtn1, .servobtn2, .servobtn3 {
+  height: 200px;
+  transform: rotate(90deg);
+}
+
+#developers {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 1300px) {
+  #developers {
+    flex-wrap: wrap;
+  }
+}
+
+#developers .developer {
+  margin: 20px;
+  min-width: 250px;
+  background-color: #0F7C87;
+  color: #EBE8C3;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 2px 2px 20px #09444A;
+}
+
+@media screen and (max-width: 1300px) {
+  #developers .developer {
+    width: 350px;
+  }
+}
+
+#developers .developer h3 {
+  font-size: 30px;
+}
+
+#developers .developer h4 {
+  font-size: 20px;
+}
