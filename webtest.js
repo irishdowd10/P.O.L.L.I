@@ -53,17 +53,17 @@ board.on("ready", function() {
     piezo: piezo
   });
 
-// make web server listen on port 80
+// make web server listen on chosen port
 app.listen(4200);
 
 
 // handle web server
 function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
+  fs.readFile(__dirname + '/controls.html',
   function (err, data) {
     if (err) {
       res.writeHead(500);
-      return res.end('Error loading index.html');
+      return res.end('Error loading controls.html');
     }
 
     res.writeHead(200);
@@ -137,7 +137,5 @@ io.sockets.on('connection', function (socket) {
       });
     }
   })
-
-
 
 });

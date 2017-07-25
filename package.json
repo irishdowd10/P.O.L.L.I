@@ -3,15 +3,36 @@
   "version": "0.0.1",
   "description": "Testing node, web sockets, johnny-five, arduino",
   "main": "webtest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irishdowd10/P.O.L.L.I"
+  },
+  "author": "Isabella Abatgis, Daniel Lopez, John Dowd, Pete Lazuran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irishdowd10/P.O.L.L.I"
+  },
+  "homepage": "https://github.com/irishdowd10/P.O.L.L.I#readme",
   "dependencies": {
     "firmata": "^0.17.0",
     "johnny-five": "^0.7.56",
     "socket.io": "~0.9.16"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "MIT"
+  "devDependencies": {
+    "bower-files": "^4.0.0",
+    "browser-sync": "^2.18.12",
+    "browserify": "^14.4.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "vinyl-source-stream": "^1.1.0"
+  }
 }
