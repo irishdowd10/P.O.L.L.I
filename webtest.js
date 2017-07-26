@@ -7,7 +7,7 @@ var express = require('express'),
   io = require('socket.io').listen(server),
   fs = require('fs'),
   five = require("johnny-five"),
-  board,servo0,servo1,servo2,servo3,servo4,piezo;
+  board,servo0,servo1,servo2,servo3,servo4,piezo,led;
 
 app.use(express.static(path.join(__dirname, 'public')));
 board = new five.Board();
@@ -17,7 +17,8 @@ board = new five.Board();
 // on board ready
 board.on("ready", function() {
   piezo = new five.Piezo(8);
-
+  var led = new five.Led(13);
+  led.blink(500);
   // setup a stanard servo, center at start
   servo0 = new five.Servo({
     pin:3,
@@ -56,9 +57,15 @@ board.on("ready", function() {
 
 });
 
+board.on("exit", function() {
+  var led = new five.Led(13);
+  led.off();
+});
+
   board.repl.inject({
     piezo: piezo
   });
+
 
 // make web server listen on chosen port
 
@@ -82,6 +89,8 @@ function handler (req, res) {
 
 // on a socket connection
 io.sockets.on('connection', function (socket) {
+
+
 
   // if servo message received
   socket.on('servo0', function (data) {

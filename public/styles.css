@@ -295,8 +295,12 @@ input[type="range"]:focus, input[type="text"]:focus, #piezo:focus {
   outline: none;
 }
 
-.servobtn1, .servobtn2, .servobtn3 {
+.servobtn1, .servobtn3 {
   transform: rotate(-90deg) translateX(-100px);
+}
+
+.servobtn2 {
+  transform: rotate(90deg) translateX(100px);
 }
 
 
