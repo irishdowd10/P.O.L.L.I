@@ -77,8 +77,9 @@ section ul li a:hover {
   margin: 0;
 }
 
-.controller h2 {
+.controls h2 {
   color: #E19E29;
+  margin-left: 100px;
 }
 
 .controller p {
@@ -166,6 +167,14 @@ section ul li a:hover {
   margin-bottom: 15px;
 }
 
+.controls h2 {
+  font-size: 70px;
+  color: #ED665A;
+  margin-bottom: 15px;
+  margin-top: 0;
+  text-align: left;
+}
+
 .gradient {
   background: #0F7C87;
   background: -webkit-linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
@@ -179,16 +188,7 @@ section ul li a:hover {
   width: 100%;
 }
 
-input[type="text"] {
-  pointer-events: none;
-  border: none;
-  text-align: center;
-}
 
-.servobtn1, .servobtn2, .servobtn3 {
-  height: 200px;
-  transform: rotate(90deg);
-}
 
 #developers {
   display: flex;
@@ -223,4 +223,99 @@ input[type="text"] {
 
 #developers .developer h4 {
   font-size: 20px;
+}
+
+
+
+/*controls page*/
+
+.controls {
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+#controls-body {
+  background: #3A2E39;
+}
+
+.controls h4 {
+  color: #EBE8C3;
+  font-size: 30px;
+}
+
+.horiz {
+  padding-bottom: 20px;
+}
+
+#piezo {
+  padding: 15px 10px;
+  background-color: transparent;
+  color: #09fdf4;
+  border: 0px
+}
+
+#piezo:hover {
+  text-shadow: 2px 2px 10px #0F7C87, 2px 2px 2px #0F7C87, -2px -2px 2px #0F7C87, -2px 2px 2px #0F7C87, 2px -2px 2px #0F7C87, 3px 3px 8px #0F7C87, -3px -3px 8px #0f7C87, -3px 3px 8px #0f7C87, 3px -3px 8px #0f7C87;
+}
+
+#piezo:active {
+  transform: scale(.8);
+  transition: all .01s ease-in-out;
+}
+
+.row {
+  margin-top: 80px;
+}
+
+input[type="text"] {
+  background-color: transparent;
+  color: #ED665A;
+  font-size: 40px;
+  pointer-events: none;
+  border: none;
+  text-align: center;
+  width: 80px;
+}
+
+
+input[type="range"] {
+  position: relative;
+  -webkit-appearance: none !important;
+  width: 200px;
+  height: 5px;
+  background-color: #ED665A;
+  border: 1px solid #ED665A;
+  radius: 10px;
+  margin: auto;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+input[type="range"]:focus, input[type="text"]:focus, #piezo:focus {
+  outline: none;
+}
+
+.servobtn1, .servobtn2, .servobtn3 {
+  transform: rotate(-90deg) translateX(-100px);
+}
+
+
+#textInput1, #textInput2, #textInput3 {
+  margin-top: 200px;
+}
+
+#textInput, #textInput4 {
+  margin-top: 20px;
+}
+
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  width: 25px;
+  height: 25px;
+  background-color: #09fdf4;
+  border-radius: 30px;
+  box-shadow: 2px 2px 10px #0F7C87, 2px 2px 2px #0F7C87, -2px -2px 2px #0F7C87, -2px 2px 2px #0F7C87, 2px -2px 2px #0F7C87, 3px 3px 8px #0F7C87, -3px -3px 8px #0f7C87, -3px 3px 8px #0f7C87, 3px -3px 8px #0f7C87;
+  position: relative;
+  transition: all 0.5s ease;
 }

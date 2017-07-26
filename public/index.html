@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Arduino UI</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
@@ -13,16 +14,282 @@
       <a name="nav"></a>
       <ul>
         <li><a href="index.html"><i class="fa fa-home fa-3x" aria-hidden="true"></i><br>Home</a></li>
-        <li><a href="about.html"><i class="fa Example of cubes fa-cubes fa-3x" aria-hidden="true"></i><br> About</a></li>
-        <li><a href="controls.html"><i class="fa fa-gamepad fa-3x" aria-hidden="true"></i><br>Controls</a></li>
-        <li><a href="#"><i class="fa fa-bar-chart fa-3x" aria-hidden="true"></i><br> Analytics</a></li>
+        <li><a href="#hardware"><i class="fa Example of cubes fa-cubes fa-3x" aria-hidden="true"></i><br>Hardware</a></li>
+        <li><a href="#developerz"><i class="fa Example of cubes fa-users fa-3x" aria-hidden="true"></i><br>Developers</a></li>
+        <li><a href="#controls"><i class="fa fa-gamepad fa-3x" aria-hidden="true"></i><br>Controls</a></li>
+        <li><a href="#analytics"><i class="fa Example of cubes fa-bar-chart fa-3x" aria-hidden="true"></i><br>Analytics</a></li>
       </ul>
     </section>
-
-
     <section class="hero">
       <h1>P.O.L.L.I.</h1>
       <h3>Program Operated Load Lifting Instrument</h3>
+    </section>
+    <section class="gradient">
+      <section class="controls" id="controls">
+        <h2>Controls</h2>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+            <h4 class="vert">Shoulder</h4>
+              <div class="btn-group" data-toggle="buttons">
+                <input class="servobtn1" type="range"  min="15" max="165" value="90" name="servo1" onchange="updateTextInput1(this.value), updateCounter1(servo1Data);"/>
+                <input type="text" id="textInput1" value="90">
+              </div>
+            </div>
+            <div class="col-md-4">
+            <h4 class="vert">Elbow</h4>
+              <div class="btn-group" data-toggle="buttons">
+                <input class="servobtn2" type="range"  min="15" max="165" value="90" name="servo2" onchange="updateTextInput2(this.value), updateCounter2(servo2Data);"/>
+                <input type="text" id="textInput2" value="90">
+              </div>
+            </div>
+            <div class="col-md-4">
+            <h4 class="vert">Wrist</h4>
+              <div class="btn-group" data-toggle="buttons">
+                <input class="servobtn3" type="range"  min="20" max="160" value="90" name="servo3" onchange="updateTextInput3(this.value), updateCounter3(servo3Data);"/>
+                <input type="text" id="textInput3" value="90">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+            <h4 class="horiz">Claw</h4>
+              <div class="btn-group" data-toggle="buttons">
+                <input class="servobtn4" type="range"  min="1" max="50" value="25" name="servo4" onchange="updateTextInput4(this.value), updateCounter4(servo4Data);"/>
+                <input type="text" id="textInput4" value="25">
+              </div>
+            </div>
+            <div class="col-md-4" id="music-button">
+              <h4>Play Song</h4>
+              <button id="piezo" type="button" name="piezo"><i class="fa fa-music fa-4x" aria-hidden="true"></i></button>
+            </div>
+            <div class="col-md-4">
+              <h4 class="horiz">Base</h4>
+              <div class="btn-group" data-toggle="buttons">
+                <input class="servobtn" type="range"  min="1" max="179" value="90" name="servo0" onchange="updateTextInput(this.value), updateCounter(servo0Data);"/>
+                <input type="text" id="textInput" value="90">
+              </div>
+            </div>
+          </div>
+          <table>
+            <tr>
+              <th>Servo name</th>
+              <th>Number of activations</th>
+            </tr>
+            <tr>
+              <td>Base</td>
+              <td><input type="text" id="textCounter" value=""></td>
+            </tr>
+            <tr>
+              <td>Shoulder</td>
+              <td><input type="text" id="textCounter1" value=""></td>
+            </tr>
+            <tr>
+              <td>Elbow</td>
+              <td><input type="text" id="textCounter2" value=""></td>
+            </tr>
+            <tr>
+              <td>Wrist</td>
+              <td><input type="text" id="textCounter3" value=""></td>
+            </tr>
+            <tr>
+              <td>Claw</td>
+              <td><input type="text" id="textCounter4" value=""></td>
+            </tr>
+          </table>
+        </div>
+      </section>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+
+
+        var socket = io.connect('http://localhost');
+
+        var servo0Data = 1;
+        var servo1Data = 1;
+        var servo2Data = 1;
+        var servo3Data = 1;
+        var servo4Data = 1;
+
+        $('.servobtn').on('change',function(){
+            console.log("Setting Servo Pos:",$('input[name=servo0]').val())
+            socket.emit('servo0',{pos:$('input[name=servo0]').val()});
+            servo0Data ++;
+        });
+        $('.servobtn1').on('change',function(){
+            console.log("Setting Servo Pos:",$('input[name=servo1]').val())
+            socket.emit('servo1',{pos:$('input[name=servo1]').val()});
+            servo1Data ++;
+        });
+        $('.servobtn2').on('change',function(){
+            console.log("Setting Servo Pos:",$('input[name=servo2]').val())
+            socket.emit('servo2',{pos:$('input[name=servo2]').val()});
+            servo2Data ++;
+        });
+        $('.servobtn3').on('change',function(){
+            console.log("Setting Servo Pos:",$('input[name=servo3]').val())
+            socket.emit('servo3',{pos:$('input[name=servo3]').val()});
+            servo3Data ++;
+        });
+        $('.servobtn4').on('change',function(){
+            console.log("Setting Servo Pos:",$('input[name=servo4]').val())
+            socket.emit('servo4',{pos:$('input[name=servo4]').val()});
+            servo4Data ++;
+        });
+        $('#piezo').on('click', function(){
+          console.log("music should play")
+          socket.emit('piezo');
+        })
+
+        function updateTextInput(val) {
+            document.getElementById('textInput').value=val;
+          }
+        function updateTextInput1(val) {
+            document.getElementById('textInput1').value=val;
+          }
+        function updateTextInput2(val) {
+            document.getElementById('textInput2').value=val;
+          }
+        function updateTextInput3(val) {
+            document.getElementById('textInput3').value=val;
+          }
+        function updateTextInput4(val) {
+            document.getElementById('textInput4').value=val;
+          }
+
+        function updateCounter(servo0Data) {
+            document.getElementById('textCounter').value=servo0Data;
+            if (servo0Data > 250) {
+              alert("servo 0 (base) needs service")
+            }
+          }
+        function updateCounter1(servo1Data) {
+            document.getElementById('textCounter1').value=servo1Data;
+            if (servo1Data > 250) {
+              alert("servo 1 (shoulder) needs service")
+            }
+          }
+        function updateCounter2(servo2Data) {
+            document.getElementById('textCounter2').value=servo2Data;
+            if (servo2Data > 250) {
+              alert("servo 2 (elbow) needs service")
+            }
+          }
+        function updateCounter3(servo3Data) {
+            document.getElementById('textCounter3').value=servo3Data;
+            if (servo3Data > 250) {
+              alert("servo 3 (wrist) needs service")
+            }
+          }
+        function updateCounter4(servo4Data) {
+            document.getElementById('textCounter4').value=servo4Data;
+            if (servo4Data > 250) {
+              alert("servo 4 (claw) needs service")
+            }
+          }
+
+      </script>
+      
+
+      <section class="hardware">
+        <a class="scroll-top" href="#nav">Back to Top <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+        <img class="divide" src="http://museresources.com/images/soft%20slit%20separator.png?crc=4104113101">
+      	<a name="hardware"></a>
+      	<h2>Hardware</h2>
+      	<p>It took 3 separate components to get this robot working</p>
+      	<div class="product">
+      		<div class="product-image">
+      			<img src="img/al5d.png">
+      		</div>
+      		<div class="product-specs">
+      			<h3>Lynxmotion AL5D Robotic Arm</h3>
+      			<ul>
+      				<li>Aluminum robotic arm</li>
+      				<li>Servo Erector Set components</li>
+      				<li>10 oz. lift capacity at full reach</li>
+      				<li>Base Rotation</li>
+      				<li>Single Plane Shoulder</li>
+      				<li>Elbow Motion</li>
+      				<li>Functional Gripper</li>
+      			</ul>
+      		</div>
+      	</div>
+      	<img class="divide" src="http://museresources.com/images/soft%20slit%20separator.png?crc=4104113101">
+      	<div class="product">
+      		<div class="product-specs">
+      			<h3>Arduino Uno</h3>
+      			<ul>
+      				<li>Microcontroller board</li>
+      				<li>14 digital input/output pins</li>
+      				<li>6 analog inputs</li>
+      				<li>16 MHz crystal oscillator</li>
+      				<li>USB connection</li>
+      				<li>Power jack</li>
+      				<li>ICSP header</li>
+      				<li>Reset button</li>
+      			</ul>
+      		</div>
+      		<div class="product-image">
+      			<img src="img/arduino.png">
+      		</div>
+      	</div>
+      	<img class="divide" src="http://museresources.com/images/soft%20slit%20separator.png?crc=4104113101">
+      	<div class="product">
+      		<div class="product-image">
+      			<img src="img/leap.png">
+      		</div>
+      		<div class="product-specs">
+      			<h3>Leap Motion Controller</h3>
+      			<ul>
+      				<li>USB peripheral device</li>
+      				<li>Tracks motion</li>
+      				<li>Two monochromatic IR cameras</li>
+      				<li>Three infrared LEDs</li>
+      				<li>1 meter range</li>
+      				<li>~200 frames per second of reflected data</li>
+      				<li>Accuracy within 0.7 millimeters</li>
+      			</ul>
+      		</div>
+      	</div>
+      	<a class="scroll-top" href="#nav">Back to Top <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+        <img class="divide" src="http://museresources.com/images/soft%20slit%20separator.png?crc=4104113101">
+      </section>
+      <section class="developers">
+      	<a name="developerz"></a>
+      	<h2>Developers</h2>
+      	<div id="developers">
+      		<div class="developer">
+      			<img class="dev-pic" src="img/john.jpg">
+      			<h3>John Dowd</h3>
+      			<h4>Track: C#/.Net</h4>
+      			<br>
+      			<p>lorem ipsum blah blah typing lorem ipsum doesnt work in codepen so here I go writing some random shit. The quick brown fox jumped over the lazy dog.</p>
+      		</div>
+      		<div class="developer">
+      			<img class="dev-pic" src="img/pete.jpg">
+      			<h3>Pete Lazuran</h3>
+      			<h4>Track: C#/.Net</h4>
+      			<br>
+      			<p>lorem ipsum blah blah typing lorem ipsum doesnt work in codepen so here I go writing some random shit. The quick brown fox jumped over the lazy dog.</p>
+      		</div>
+      		<div class="developer">
+      			<img class="dev-pic" src="img/daniel.jpeg">
+      			<h3>Daniel Lopez</h3>
+      			<h4>Track: CSS/Design</h4>
+      			<br>
+      			<p>lorem ipsum blah blah typing lorem ipsum doesnt work in codepen so here I go writing some random shit. The quick brown fox jumped over the lazy dog.</p>
+      		</div>
+      		<div class="developer">
+      			<img class="dev-pic" src="img/isabella.png">
+      			<h3>Isabella Abatgis</h3>
+      			<h4>Track: CSS/Design</h4>
+      			<br>
+      			<p>lorem ipsum blah blah typing lorem ipsum doesnt work in codepen so here I go writing some random shit. The quick brown fox jumped over the lazy dog.</p>
+      		</div>
+      	</div>
+      </section>
+      <a class="scroll-top" href="#nav">Back to Top <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
     </section>
   </body>
 </html>

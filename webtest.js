@@ -67,11 +67,11 @@ board.on("ready", function() {
 
 // handle web server
 function handler (req, res) {
-  fs.readFile(__dirname + '/controls.html',
+  fs.readFile(__dirname + '/index.html',
   function (err, data) {
     if (err) {
       res.writeHead(500);
-      return res.end('Error loading controls.html');
+      return res.end('Error loading index.html');
     }
 
     res.writeHead(200);
@@ -86,32 +86,31 @@ io.sockets.on('connection', function (socket) {
   // if servo message received
   socket.on('servo0', function (data) {
     console.log(data);
-    if(board.isReady){ servo0.to(data.pos);
-    console.log(servo0Data)}
+    if(board.isReady){ servo0.to(data.pos);}
   });
 
   socket.on('servo1', function (data) {
     console.log(data);
     if(board.isReady){ servo1.to(data.pos);
-      console.log(servo1Data) }
+    }
   });
 
   socket.on('servo2', function (data) {
     console.log(data);
     if(board.isReady){ servo2.to(data.pos);
-      console.log(servo2Data) }
+    }
   });
 
   socket.on('servo3', function (data) {
     console.log(data);
     if(board.isReady){ servo3.to(data.pos);
-      console.log(servo3Data)  }
+      }
   });
 
   socket.on('servo4', function (data) {
     console.log(data);
     if(board.isReady){ servo4.to(data.pos);
-      console.log(servo4Data)  }
+     }
   });
 
   socket.on('piezo', function (){
