@@ -7,21 +7,18 @@ var express = require('express'),
   io = require('socket.io').listen(server),
   fs = require('fs'),
   five = require("johnny-five"),
-  board,servo0,servo1,servo2,servo3,servo4,piezo;
+  board,servo0,servo1,servo2,servo3,servo4,piezo,led;
 
 app.use(express.static(path.join(__dirname, 'public')));
 board = new five.Board();
 
-servo0Data = [];
-servo1Data = [];
-servo2Data = [];
-servo3Data = [];
-servo4Data = [];
+
 
 // on board ready
 board.on("ready", function() {
   piezo = new five.Piezo(8);
-
+  var led = new five.Led(13);
+  led.blink(500);
   // setup a stanard servo, center at start
   servo0 = new five.Servo({
     pin:3,
@@ -60,9 +57,15 @@ board.on("ready", function() {
 
 });
 
+board.on("exit", function() {
+  var led = new five.Led(13);
+  led.off();
+});
+
   board.repl.inject({
     piezo: piezo
   });
+
 
 // make web server listen on chosen port
 
@@ -71,11 +74,11 @@ board.on("ready", function() {
 
 // handle web server
 function handler (req, res) {
-  fs.readFile(__dirname + '/controls.html',
+  fs.readFile(__dirname + '/index.html',
   function (err, data) {
     if (err) {
       res.writeHead(500);
-      return res.end('Error loading controls.html');
+      return res.end('Error loading index.html');
     }
 
     res.writeHead(200);
@@ -86,50 +89,37 @@ function handler (req, res) {
 
 // on a socket connection
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
 
-  // if board is ready
-  // if(board.isReady){
-  //   // read in sensor data, pass to browser
-  //   sensor.on("data",function(){
-  //     socket.emit('sensor', { raw: this.raw });
-  //   });
-  // }
+
 
   // if servo message received
   socket.on('servo0', function (data) {
     console.log(data);
-    if(board.isReady){ servo0.to(data.pos);
-    servo0Data.push(data);
-    console.log(servo0Data[0])}
+    if(board.isReady){ servo0.to(data.pos);}
   });
 
   socket.on('servo1', function (data) {
     console.log(data);
     if(board.isReady){ servo1.to(data.pos);
-      servo1Data.push(data);
-      console.log(servo0Data[0]) }
+    }
   });
 
   socket.on('servo2', function (data) {
     console.log(data);
     if(board.isReady){ servo2.to(data.pos);
-      servo2Data.push(data);
-      console.log(servo0Data[0])  }
+    }
   });
 
   socket.on('servo3', function (data) {
     console.log(data);
     if(board.isReady){ servo3.to(data.pos);
-      servo3Data.push(data);
-      console.log(servo0Data[0])  }
+      }
   });
 
   socket.on('servo4', function (data) {
     console.log(data);
     if(board.isReady){ servo4.to(data.pos);
-      servo4Data.push(data);
-      console.log(servo0Data[0])  }
+     }
   });
 
   socket.on('piezo', function (){
