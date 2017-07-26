@@ -87,13 +87,20 @@ section ul li a:hover {
 }
 
 .controls h2 {
-  color: #E19E29;
   margin-left: 100px;
 }
 
 .controller p {
   color: #EBE8C3;
 }
+
+
+#analytics h2 {
+  color: #E19E29;
+  margin-left: 100px;
+}
+
+
 
 .hardware {
   padding: 0px 100px;
