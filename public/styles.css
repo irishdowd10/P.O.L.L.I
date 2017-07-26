@@ -34,7 +34,7 @@ section ul li a:hover {
 
 .hero {
   background-color: #3A2E39;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 190px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,7 +65,7 @@ section ul li a:hover {
 .hero-small h1 {
   font-size: 150px;
   color: #09fdf4;
-  animation: glow 5s linear both infinite;
+  animation: glow 4s linear both infinite;
   animation-direction: alternate;
   margin: 0;
 }
@@ -74,6 +74,15 @@ section ul li a:hover {
   font-size: 20px;
   color: #EBE8C3;
   font-weight: lighter;
+  margin: 0;
+}
+
+.explore {
+  text-align: center;
+  color: #E19E29;
+}
+
+.explore h1 {
   margin: 0;
 }
 
@@ -177,10 +186,10 @@ section ul li a:hover {
 
 .gradient {
   background: #0F7C87;
-  background: -webkit-linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
-  background: -o-linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
-  background: -moz-linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
-  background: linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: -webkit-linear-gradient(#3A2E39, #3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: -o-linear-gradient(#3A2E39, #3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: -moz-linear-gradient(#3A2E39, #3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: linear-gradient(#3A2E39, #3A2E39, #0F7C87, #3A2E39, #3A2E39);
   padding-bottom: 100px;
 }
 
