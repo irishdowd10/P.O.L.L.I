@@ -12,11 +12,7 @@ var express = require('express'),
 app.use(express.static(path.join(__dirname, 'public')));
 board = new five.Board();
 
-servo0Data = [];
-servo1Data = [];
-servo2Data = [];
-servo3Data = [];
-servo4Data = [];
+
 
 // on board ready
 board.on("ready", function() {
@@ -86,50 +82,36 @@ function handler (req, res) {
 
 // on a socket connection
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-
-  // if board is ready
-  // if(board.isReady){
-  //   // read in sensor data, pass to browser
-  //   sensor.on("data",function(){
-  //     socket.emit('sensor', { raw: this.raw });
-  //   });
-  // }
 
   // if servo message received
   socket.on('servo0', function (data) {
     console.log(data);
     if(board.isReady){ servo0.to(data.pos);
-    servo0Data.push(data);
-    console.log(servo0Data[0])}
+    console.log(servo0Data)}
   });
 
   socket.on('servo1', function (data) {
     console.log(data);
     if(board.isReady){ servo1.to(data.pos);
-      servo1Data.push(data);
-      console.log(servo0Data[0]) }
+      console.log(servo1Data) }
   });
 
   socket.on('servo2', function (data) {
     console.log(data);
     if(board.isReady){ servo2.to(data.pos);
-      servo2Data.push(data);
-      console.log(servo0Data[0])  }
+      console.log(servo2Data) }
   });
 
   socket.on('servo3', function (data) {
     console.log(data);
     if(board.isReady){ servo3.to(data.pos);
-      servo3Data.push(data);
-      console.log(servo0Data[0])  }
+      console.log(servo3Data)  }
   });
 
   socket.on('servo4', function (data) {
     console.log(data);
     if(board.isReady){ servo4.to(data.pos);
-      servo4Data.push(data);
-      console.log(servo0Data[0])  }
+      console.log(servo4Data)  }
   });
 
   socket.on('piezo', function (){
