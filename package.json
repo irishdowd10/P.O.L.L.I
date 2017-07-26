@@ -25,7 +25,7 @@
     "express": "^4.15.3",
     "firmata": "^0.17.0",
     "indent-string": "^3.2.0",
-    "johnny-five": "^0.7.56",
+    "johnny-five": "^0.11.3",
     "socket.io": "~0.9.16"
   },
   "devDependencies": {}
