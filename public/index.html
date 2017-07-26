@@ -61,7 +61,7 @@
             </div>
             <div class="col-md-4" id="music-button">
               <h4>Play Song</h4>
-              <button id="piezo" type="button" name="piezo"><i class="fa fa-music fa-4x" aria-hidden="true"></i></button>
+              <button id="piezo" type="button" name="piezo"><i class="fa fa-music fa-4x" aria-hidden="true" onClick="updateHornCounter(hornCount)"></i></button>
             </div>
             <div class="col-md-4">
               <h4 class="horiz">Base</h4>
@@ -96,6 +96,10 @@
               <td>Claw</td>
               <td><input type="text" id="textCounter4" value=""></td>
             </tr>
+            <tr>
+              <td>Horn</td>
+              <td><input type="text" id="hornCounter" value=""></td>
+            </tr>
           </table>
         </div>
       </section>
@@ -111,6 +115,7 @@
         var servo2Data = 1;
         var servo3Data = 1;
         var servo4Data = 1;
+        var hornCount = 1;
 
         $('.servobtn').on('change',function(){
             console.log("Setting Servo Pos:",$('input[name=servo0]').val())
@@ -140,6 +145,7 @@
         $('#piezo').on('click', function(){
           console.log("music should play")
           socket.emit('piezo');
+          hornCount ++;
         })
 
         function updateTextInput(val) {
@@ -188,9 +194,15 @@
               alert("servo 4 (claw) needs service")
             }
           }
+        function updateHornCounter(hornCount) {
+            document.getElementById('hornCounter').value=hornCount;
+            if (hornCount > 250) {
+              alert("horn needs service")
+            }
+          }
 
       </script>
-      
+
 
       <section class="hardware">
         <a class="scroll-top" href="#nav">Back to Top <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
