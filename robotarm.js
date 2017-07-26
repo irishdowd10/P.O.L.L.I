@@ -121,8 +121,8 @@ board.on('ready', function() {
   // Initial positions of the robot arm
   servoBase.to(90);
   servoShoulder.to(90);
-  servoElbow.to(75);
-  servoWrist.to(105);
+  servoElbow.to(90);
+  servoWrist.to(90);
   servoClaw.to(35);
 
   // Move each component
@@ -142,7 +142,7 @@ board.on('ready', function() {
     if(wristAngle >= 60 && wristAngle <= 160) {
       servoWrist.to(clawAngle);
     }
-    console.log("Base: " + Math.floor(baseAngle) + "\tShoulder: " + Math.floor(shoulderAngle) + "\tElbow: " + Math.floor(elbowAngle) + "\tClaw: " + Math.floor(clawAngle)) + "Wrist: " + Math.floor(wristAngle);
+    console.log("Base: " + Math.floor(baseAngle) + "\tShoulder: " + Math.floor(shoulderAngle) + "\tElbow: " + Math.floor(elbowAngle) + "\tClaw: " + Math.floor(clawAngle)) + "\tWrist: " + Math.floor(wristAngle);
   });
 });
 
