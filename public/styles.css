@@ -56,34 +56,13 @@ section ul li a:hover {
   font-weight: lighter;
 }
 
-.hero-small {
-  background-color: #3A2E39;
-  padding: 100px 0;
+.explore {
   text-align: center;
-}
-
-.hero-small h1 {
-  font-size: 150px;
-  color: #09fdf4;
-  animation: glow 5s linear both infinite;
-  animation-direction: alternate;
-  margin: 0;
-}
-
-.hero-small h3 {
-  font-size: 20px;
-  color: #EBE8C3;
-  font-weight: lighter;
-  margin: 0;
-}
-
-.controls h2 {
   color: #E19E29;
-  margin-left: 100px;
 }
 
-.controller p {
-  color: #EBE8C3;
+.explore h1 {
+  margin: 0;
 }
 
 .hardware {
@@ -177,10 +156,10 @@ section ul li a:hover {
 
 .gradient {
   background: #0F7C87;
-  background: -webkit-linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
-  background: -o-linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
-  background: -moz-linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
-  background: linear-gradient(#3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: -webkit-linear-gradient(#3A2E39, #3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: -o-linear-gradient(#3A2E39, #3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: -moz-linear-gradient(#3A2E39, #3A2E39, #0F7C87, #3A2E39, #3A2E39);
+  background: linear-gradient(#3A2E39, #3A2E39, #0F7C87, #3A2E39, #3A2E39);
   padding-bottom: 100px;
 }
 
@@ -234,6 +213,10 @@ section ul li a:hover {
   padding-bottom: 100px;
 }
 
+.controls .container {
+  padding-top: 100px;
+}
+
 #controls-body {
   background: #3A2E39;
 }
@@ -264,10 +247,10 @@ section ul li a:hover {
 }
 
 .row {
-  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
-input[type="text"] {
+.position {
   background-color: transparent;
   color: #ED665A;
   font-size: 40px;
@@ -322,4 +305,65 @@ input[type=range]::-webkit-slider-thumb {
   box-shadow: 2px 2px 10px #0F7C87, 2px 2px 2px #0F7C87, -2px -2px 2px #0F7C87, -2px 2px 2px #0F7C87, 2px -2px 2px #0F7C87, 3px 3px 8px #0F7C87, -3px -3px 8px #0f7C87, -3px 3px 8px #0f7C87, 3px -3px 8px #0f7C87;
   position: relative;
   transition: all 0.5s ease;
+}
+
+.controls h2 {
+  margin-left: 100px;
+}
+
+.controller p {
+  color: #EBE8C3;
+}
+
+
+.analytics {
+  color: #EBE8C3;
+  margin: 0px auto;
+  font-size: 25px;
+}
+
+#tableh3 {
+  color: #ED665A;
+  padding-bottom: 15px;
+  font-size: 35px;
+}
+
+.counter {
+  background-color: transparent;
+  color: #ED665A;
+  font-size: 20px;
+  pointer-events: none;
+  border: none;
+  text-align: center;
+  width: 120px;
+}
+
+/*video*/
+
+#video {
+  background-color: #3A2E39;
+  padding-bottom: 100px;
+}
+
+.vid-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 50px;
+}
+
+#video h2 {
+  font-size: 70px;
+  color: #ED665A;
+  margin-bottom: 80px;
+  margin-left: 100px;
+  margin-top: 0px;
 }

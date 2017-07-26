@@ -13,41 +13,49 @@
     <section class="navigate">
       <a name="nav"></a>
       <ul>
-        <li><a href="index.html"><i class="fa fa-home fa-3x" aria-hidden="true"></i><br>Home</a></li>
-        <li><a href="#hardware"><i class="fa Example of cubes fa-cubes fa-3x" aria-hidden="true"></i><br>Hardware</a></li>
-        <li><a href="#developerz"><i class="fa Example of cubes fa-users fa-3x" aria-hidden="true"></i><br>Developers</a></li>
+        <li><a href="#video"><i class="fa fa-video-camera fa-3x" aria-hidden="true"></i><br>Video</a></li>
         <li><a href="#controls"><i class="fa fa-gamepad fa-3x" aria-hidden="true"></i><br>Controls</a></li>
-        <li><a href="#analytics"><i class="fa Example of cubes fa-bar-chart fa-3x" aria-hidden="true"></i><br>Analytics</a></li>
+        <li><a href="#analytics"><i class="fa fa-bar-chart fa-3x" aria-hidden="true"></i><br>Analytics</a></li>
+        <li><a href="#hardware"><i class="fa fa-cubes fa-3x" aria-hidden="true"></i><br>Hardware</a></li>
+        <li><a href="#developerz"><i class="fa fa-users fa-3x" aria-hidden="true"></i><br>Developers</a></li>
       </ul>
     </section>
     <section class="hero">
       <h1>P.O.L.L.I.</h1>
       <h3>Program Operated Load Lifting Instrument</h3>
     </section>
+    <section id="video">
+      <h2>Video</h2>
+      <div class="vid-container">
+        <iframe width="100vw" height="" src="https://www.youtube.com/embed/HboNB4yJRu0" frameborder="0" allowfullscreen class="video"></iframe>
+      </div>
+      <a class="scroll-top" href="#nav">Back to Top <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+    </section>
     <section class="gradient">
       <section class="controls" id="controls">
         <h2>Controls</h2>
+
         <div class="container">
           <div class="row">
             <div class="col-md-4">
             <h4 class="vert">Shoulder</h4>
               <div class="btn-group" data-toggle="buttons">
                 <input class="servobtn1" type="range"  min="15" max="165" value="90" name="servo1" onchange="updateTextInput1(this.value), updateCounter1(servo1Data);"/>
-                <input type="text" id="textInput1" value="90">
+                <input type="text" id="textInput1" value="90" class="position">
               </div>
             </div>
             <div class="col-md-4">
             <h4 class="vert">Elbow</h4>
               <div class="btn-group" data-toggle="buttons">
                 <input class="servobtn2" type="range"  min="15" max="165" value="90" name="servo2" onchange="updateTextInput2(this.value), updateCounter2(servo2Data);"/>
-                <input type="text" id="textInput2" value="90">
+                <input type="text" id="textInput2" value="90" class="position">
               </div>
             </div>
             <div class="col-md-4">
             <h4 class="vert">Wrist</h4>
               <div class="btn-group" data-toggle="buttons">
                 <input class="servobtn3" type="range"  min="20" max="160" value="90" name="servo3" onchange="updateTextInput3(this.value), updateCounter3(servo3Data);"/>
-                <input type="text" id="textInput3" value="90">
+                <input type="text" id="textInput3" value="90" class="position">
               </div>
             </div>
           </div>
@@ -56,49 +64,43 @@
             <h4 class="horiz">Claw</h4>
               <div class="btn-group" data-toggle="buttons">
                 <input class="servobtn4" type="range"  min="1" max="50" value="25" name="servo4" onchange="updateTextInput4(this.value), updateCounter4(servo4Data);"/>
-                <input type="text" id="textInput4" value="25">
+                <input type="text" id="textInput4" value="25" class="position">
               </div>
             </div>
             <div class="col-md-4" id="music-button">
-              <h4>Play Song</h4>
-              <button id="piezo" type="button" name="piezo"><i class="fa fa-music fa-4x" aria-hidden="true" onClick="updateHornCounter(hornCount)"></i></button>
+              <h4>Power</h4>
+              <button id="piezo" type="button" name="piezo" onclick="updateHornCounter(hornCount)"><i class="fa fa-power-off fa-4x" aria-hidden="true"></i></button>
             </div>
             <div class="col-md-4">
               <h4 class="horiz">Base</h4>
               <div class="btn-group" data-toggle="buttons">
                 <input class="servobtn" type="range"  min="1" max="179" value="90" name="servo0" onchange="updateTextInput(this.value), updateCounter(servo0Data);"/>
-                <input type="text" id="textInput" value="90">
+                <input type="text" id="textInput" value="90" class="position">
               </div>
             </div>
           </div>
-          <table>
+        </div>
+        <div>
+          <a name="analytics"></a>
+          <table class="analytics">
+            <h3 id="tableh3">Analytics</h3>
             <tr>
-              <th>Servo name</th>
-              <th>Number of activations</th>
-            </tr>
-            <tr>
-              <td>Base</td>
-              <td><input type="text" id="textCounter" value=""></td>
-            </tr>
-            <tr>
+              <th>Servo:</th>
+              <td>Power</td>
               <td>Shoulder</td>
-              <td><input type="text" id="textCounter1" value=""></td>
-            </tr>
-            <tr>
               <td>Elbow</td>
-              <td><input type="text" id="textCounter2" value=""></td>
-            </tr>
-            <tr>
               <td>Wrist</td>
-              <td><input type="text" id="textCounter3" value=""></td>
-            </tr>
-            <tr>
               <td>Claw</td>
-              <td><input type="text" id="textCounter4" value=""></td>
+              <td>Base</td>
             </tr>
             <tr>
-              <td>Horn</td>
-              <td><input type="text" id="hornCounter" value=""></td>
+              <th>Activations:</th>
+              <td><input type="text" id="hornCounter" class="counter" value="0"></td>
+              <td><input type="text" id="textCounter1" class="counter" value="0"></td>
+              <td><input type="text" id="textCounter2" class="counter" value="0"></td>
+              <td><input type="text" id="textCounter3" class="counter" value="0"></td>
+              <td><input type="text" id="textCounter4" class="counter" value="0"></td>
+              <td><input type="text" id="textCounter" class="counter" value="0"></td>
             </tr>
           </table>
         </div>
@@ -202,14 +204,11 @@
           }
 
       </script>
-
-
       <section class="hardware">
         <a class="scroll-top" href="#nav">Back to Top <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
         <img class="divide" src="http://museresources.com/images/soft%20slit%20separator.png?crc=4104113101">
       	<a name="hardware"></a>
       	<h2>Hardware</h2>
-      	<p>It took 3 separate components to get this robot working</p>
       	<div class="product">
       		<div class="product-image">
       			<img src="img/al5d.png">
