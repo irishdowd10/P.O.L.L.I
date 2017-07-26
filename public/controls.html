@@ -9,62 +9,66 @@
     <link rel="stylesheet" href="styles.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body>
+  <body id="controls-body">
     <section class="navigate">
       <a name="nav"></a>
       <ul>
         <li><a href="index.html"><i class="fa fa-home fa-3x" aria-hidden="true"></i><br>Home</a></li>
         <li><a href="about.html"><i class="fa Example of cubes fa-cubes fa-3x" aria-hidden="true"></i><br> About</a></li>
         <li><a href="controls.html"><i class="fa fa-gamepad fa-3x" aria-hidden="true"></i><br>Controls</a></li>
-        <li><a href="#"><i class="fa fa-bar-chart fa-3x" aria-hidden="true"></i><br> Analytics</a></li>
       </ul>
     </section>
     <section class="hero-small">
       <h1>P.O.L.L.I.</h1>
       <h3>Progam Operated Load Lifting Instrument</h3>
     </section>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-        <h4>Base to position:</h4>
-          <div class="btn-group" data-toggle="buttons">
-            <input class="servobtn" type="range"  min="1" max="179" value="90" name="servo0" onchange="updateTextInput(this.value);"/>
-            <input type="text" id="textInput" value="">
+    <section class="controls">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+          <h4 class="vert">Shoulder</h4>
+            <div class="btn-group" data-toggle="buttons">
+              <input class="servobtn1" type="range"  min="15" max="165" value="90" name="servo1" onchange="updateTextInput1(this.value);"/>
+              <input type="text" id="textInput1" value="90">
+            </div>
+          </div>
+          <div class="col-md-4">
+          <h4 class="vert">Elbow</h4>
+            <div class="btn-group" data-toggle="buttons">
+              <input class="servobtn2" type="range"  min="15" max="165" value="90" name="servo2" onchange="updateTextInput2(this.value);"/>
+              <input type="text" id="textInput2" value="90">
+            </div>
+          </div>
+          <div class="col-md-4">
+          <h4 class="vert">Wrist</h4>
+            <div class="btn-group" data-toggle="buttons">
+              <input class="servobtn3" type="range"  min="20" max="160" value="90" name="servo3" onchange="updateTextInput3(this.value);"/>
+              <input type="text" id="textInput3" value="90">
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
-        <h4>Shoulder to position:</h4>
-          <div class="btn-group" data-toggle="buttons">
-            <input class="servobtn1" type="range"  min="15" max="165" value="90" name="servo1" onchange="updateTextInput1(this.value);"/>
-            <input type="text" id="textInput1" value="">
+        <div class="row">
+          <div class="col-md-4">
+          <h4 class="horiz">Claw</h4>
+            <div class="btn-group" data-toggle="buttons">
+              <input class="servobtn4" type="range"  min="1" max="50" value="25" name="servo4" onchange="updateTextInput4(this.value);"/>
+              <input type="text" id="textInput4" value="25">
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-        <h4>Elbow to position:</h4>
-          <div class="btn-group" data-toggle="buttons">
-            <input class="servobtn2" type="range"  min="15" max="165" value="90" name="servo2" onchange="updateTextInput2(this.value);"/>
-            <input type="text" id="textInput2" value="">
+          <div class="col-md-4" id="music-button">
+            <h4>Play Song</h4>
+            <button id="piezo" type="button" name="piezo"><i class="fa fa-music fa-4x" aria-hidden="true"></i></button>
           </div>
-        </div>
-        <div class="col-md-4">
-        <h4>Wrist to position:</h4>
-          <div class="btn-group" data-toggle="buttons">
-            <input class="servobtn3" type="range"  min="20" max="160" value="90" name="servo3" onchange="updateTextInput3(this.value);"/>
-            <input type="text" id="textInput3" value="">
+          <div class="col-md-4">
+            <h4 class="horiz">Base</h4>
+            <div class="btn-group" data-toggle="buttons">
+              <input class="servobtn" type="range"  min="1" max="179" value="90" name="servo0" onchange="updateTextInput(this.value);"/>
+              <input type="text" id="textInput" value="90">
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-        <h4>Claw to position:</h4>
-          <div class="btn-group" data-toggle="buttons">
-            <input class="servobtn4" type="range"  min="1" max="50" value="25" name="servo4" onchange="updateTextInput4(this.value);"/>
-            <input type="text" id="textInput4" value="">
-          </div>
-        </div>
-        <div id="music-button">
-          <button id= "piezo" type="button" name="piezo">Play Song</button>
         </div>
       </div>
-    </div>
+    </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>

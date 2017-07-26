@@ -26,7 +26,7 @@
     "firmata": "^0.17.0",
     "indent-string": "^3.2.0",
     "johnny-five": "^0.11.3",
-    "socket.io": "~0.9.16"
+    "socket.io": "^2.0.3"
   },
   "devDependencies": {}
 }
