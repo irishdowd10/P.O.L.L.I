@@ -123,7 +123,7 @@ board.on('ready', function() {
   servoShoulder.to(90);
   servoElbow.to(90);
   servoWrist.to(90);
-  servoClaw.to(35);
+  servoClaw.to(0);
 
   // Move each component
   this.loop(30, function() {
@@ -136,7 +136,7 @@ board.on('ready', function() {
     if(baseAngle >= 0 && baseAngle <= 180) {
       servoBase.to(baseAngle);
     }
-    if(clawAngle >= 0 && clawAngle <= 90) {
+    if(clawAngle >= 0 && clawAngle <= 120) {
       servoClaw.to(clawAngle);
     }
     if(wristAngle >= 0 && wristAngle <= 180) {
