@@ -136,10 +136,10 @@ board.on('ready', function() {
     if(baseAngle >= 0 && baseAngle <= 180) {
       servoBase.to(baseAngle);
     }
-    if(clawAngle >= 20 && clawAngle <= 90) {
+    if(clawAngle >= 0 && clawAngle <= 90) {
       servoClaw.to(clawAngle);
     }
-    if(wristAngle >= 60 && wristAngle <= 160) {
+    if(wristAngle >= 0 && wristAngle <= 180) {
       servoWrist.to(clawAngle);
     }
     console.log("Base: " + Math.floor(baseAngle) + "\tShoulder: " + Math.floor(shoulderAngle) + "\tElbow: " + Math.floor(elbowAngle) + "\tClaw: " + Math.floor(clawAngle)) + "\tWrist: " + Math.floor(wristAngle);
