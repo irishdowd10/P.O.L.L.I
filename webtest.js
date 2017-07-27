@@ -19,6 +19,7 @@ board.on("ready", function() {
   piezo = new five.Piezo(8);
   var led = new five.Led(13);
   led.blink(500);
+
   // setup a stanard servo, center at start
   servo0 = new five.Servo({
     pin:3,
@@ -61,6 +62,7 @@ board.on("exit", function() {
   var led = new five.Led(13);
   led.off();
 });
+
 
   board.repl.inject({
     piezo: piezo
@@ -216,60 +218,7 @@ io.sockets.on('connection', function (socket) {
             [null, 50],
             ["E5", 650],
             [null, 50],
-            [null, 500],
-
-            ["A5", 500],
-            [null, 50],
-            ["A", 300],
-            [null, 50],
-            ["A", 150],
-            [null, 50],
-            ["A5", 500],
-            [null, 50],
-            ["G#5", 325],
-            [null, 50],
-            ["G5", 175],
-            [null, 50],
-            ["F#5", 125],
-            [null, 50],
-            ["F5", 125],
-            [null, 50],
-            ["F#5", 250],
-            [null, 50],
-            [null, 325],
-            ["A4", 250],
-            [null, 50],
-            ["D#5", 500],
-            [null, 50],
-            ["D5", 325],
-            [null, 50],
-            ["C#5", 175],
-            [null, 50],
-            ["C5", 125],
-            [null, 50],
-            ["B", 125],
-            [null, 50],
-            ["C5", 250],
-            [null, 50],
-            [null, 350],
-
-            ["F", 250],
-            [null, 50],
-            ["G4", 500],
-            [null, 50],
-            ["F", 375],
-            [null, 50],
-            ["C5", 125],
-            [null, 50],
-            ["A", 500],
-            [null, 50],
-            ["F", 375],
-            [null, 50],
-            ["C5", 125],
-            [null, 50],
-            ["A", 650],
-            [null, 50],
-            [null, 650]
+            [null, 500]
           ],
           tempo: 100000
 
