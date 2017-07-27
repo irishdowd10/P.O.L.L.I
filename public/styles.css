@@ -100,6 +100,7 @@ section ul li a:hover {
 
 .product-image {
   max-width: 800px;
+  min-width: 200px;
 }
 
 .product-image img {
@@ -174,6 +175,10 @@ section ul li a:hover {
   justify-content: space-around;
 }
 
+#developers * {
+  flex: 1;
+}
+
 @media screen and (max-width: 1300px) {
   #developers {
     flex-wrap: wrap;
@@ -183,6 +188,7 @@ section ul li a:hover {
 #developers .developer {
   margin: 20px;
   min-width: 250px;
+  max-width: 290px;
   background-color: #0F7C87;
   color: #EBE8C3;
   padding: 10px;
@@ -204,7 +210,34 @@ section ul li a:hover {
   font-size: 20px;
 }
 
+.developer a {
+  color: #ED665A;
+}
 
+.developer a:hover {
+  text-decoration: none;
+}
+
+
+.developer i:hover {
+  animation: wiggle 1s infinite;
+}
+
+.developer p {
+  font-size: 18px;
+}
+
+@keyframes wiggle {
+  5%, 50%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+}
 
 /*controls page*/
 
@@ -234,7 +267,7 @@ section ul li a:hover {
   padding: 15px 10px;
   background-color: transparent;
   color: #09fdf4;
-  border: 0px
+  border: 0px;
 }
 
 #piezo:hover {
@@ -366,4 +399,80 @@ input[type=range]::-webkit-slider-thumb {
   margin-bottom: 80px;
   margin-left: 100px;
   margin-top: 0px;
+}
+
+
+/*checklist*/
+
+#checklist {
+  color: #EBE8C3;
+  text-align: left;
+  font-size: 25px;
+  font-weight: 200;
+}
+
+#checklist label {
+  font-weight: 400;
+}
+
+.disabled-controls {
+  opacity: .3;
+  pointer-events: none;
+}
+
+.styled-checkbox {
+  position: absolute; opacity: 0;
+}
+
+.styled-checkbox + label {
+  position: relative;
+  cursor: pointer;
+  padding: 0; }
+
+.styled-checkbox + label:before {
+  content: '';
+  margin-right: 10px;
+  display:
+  inline-block;
+  vertical-align:
+  text-top;
+  width: 35px;
+  height: 35px;
+  background: #0F7C87;
+}
+
+.styled-checkbox:hover + label:before {
+  background: #09fdf4;
+  }
+
+.styled-checkbox:focus + label:before {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+}
+
+.styled-checkbox:checked + label:before {
+  background: #09fdf4;
+}
+
+.styled-checkbox:disabled + label {
+  color: #0F7C87;
+  cursor: auto;
+}
+
+.styled-checkbox:disabled + label:before {
+  box-shadow: none;
+  background: #ddd;
+}
+
+.styled-checkbox:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  background: #09fdf4;
+  width: 4px;
+  height: 4px;
+}
+
+ul {
+  list-style-type: none;
 }

@@ -13,29 +13,47 @@
     <section class="navigate">
       <a name="nav"></a>
       <ul>
-        <li><a href="#video"><i class="fa fa-video-camera fa-3x" aria-hidden="true"></i><br>Video</a></li>
         <li><a href="#controls"><i class="fa fa-gamepad fa-3x" aria-hidden="true"></i><br>Controls</a></li>
         <li><a href="#analytics"><i class="fa fa-bar-chart fa-3x" aria-hidden="true"></i><br>Analytics</a></li>
         <li><a href="#hardware"><i class="fa fa-cubes fa-3x" aria-hidden="true"></i><br>Hardware</a></li>
         <li><a href="#developerz"><i class="fa fa-users fa-3x" aria-hidden="true"></i><br>Developers</a></li>
+        <li><a href="https://youtu.be/HboNB4yJRu0" target="_blank"><i class="fa fa-youtube-play fa-3x" aria-hidden="true"></i><br>Video</a></li>
       </ul>
     </section>
     <section class="hero">
       <h1>P.O.L.L.I.</h1>
       <h3>Program Operated Load Lifting Instrument</h3>
     </section>
-    <section id="video">
-      <h2>Video</h2>
-      <div class="vid-container">
-        <iframe width="100vw" height="" src="https://www.youtube.com/embed/HboNB4yJRu0" frameborder="0" allowfullscreen class="video"></iframe>
-      </div>
-      <a class="scroll-top" href="#nav">Back to Top <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
-    </section>
     <section class="gradient">
       <section class="controls" id="controls">
         <h2>Controls</h2>
-
-        <div class="container">
+        <section id="checklist" class="checkbox-inline">
+          <ul>
+            <h3 id="tableh3">Preoperational Checklist</h3>
+            <li>
+              <input type="checkbox" id="styled-checkbox-1" name="obstruction" value="obstruction" class="checkbox checkbox1 styled-checkbox">
+              <label for="styled-checkbox-1">No obstructions in path of robot</label>
+            </li>
+            <li>
+              <input type="checkbox" id="styled-checkbox-2" name="connection" value="connection" class="checkbox checkbox2 styled-checkbox">
+              <label for="styled-checkbox-2">Connector to control board is tight</label>
+            </li>
+            <li>
+              <input type="checkbox" id="styled-checkbox-3" name="servo" value="servo" class="checkbox checkbox3 styled-checkbox">
+              <label for="styled-checkbox-3">Servo motor connections are tight</label>
+            </li>
+            <li>
+              <input type="checkbox" id="styled-checkbox-4" name="base" value="base" class="checkbox checkbox4 styled-checkbox">
+              <label for="styled-checkbox-4">Base connection is tight</label>
+            </li>
+            <li>
+              <input type="checkbox" id="styled-checkbox-5" name="safety" value="safety" class="checkbox checkbox5 styled-checkbox">
+              <label for="styled-checkbox-5">All safety and proper PPE in place</label>
+            </li>
+            <h5>All boxes must be checked before controls are operational.</h5>
+          </ul>
+        </section>
+        <div id="controls-container" class="container disabled-controls">
           <div class="row">
             <div class="col-md-4">
             <h4 class="vert">Shoulder</h4>
@@ -107,6 +125,16 @@
       </section>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
       <script src="/socket.io/socket.io.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('.checkbox').on('change',function(){
+            if ($(".checkbox1").is(":checked") && $(".checkbox2").is(":checked") && $(".checkbox3").is(":checked") && $(".checkbox4").is(":checked") && $(".checkbox5").is(":checked")) {
+              $("#controls-container").removeClass("disabled-controls");
+              $("#checklist").fadeOut();
+            }
+          });
+        });
+      </script>
       <script>
 
 
@@ -274,30 +302,38 @@
       			<img class="dev-pic" src="img/john.jpg">
       			<h3>John Dowd</h3>
       			<h4>Track: C#/.Net</h4>
-      			<br>
-      			<p>lorem ipsum blah blah typing lorem ipsum doesnt work in codepen so here I go writing some random shit. The quick brown fox jumped over the lazy dog.</p>
+            <a href="https://github.com/irishdowd10" target="_blank">
+              <i class="fa fa-github fa-5x" aria-hidden="true"></i>
+              <p>github</p>
+            </a>
       		</div>
       		<div class="developer">
       			<img class="dev-pic" src="img/pete.jpg">
       			<h3>Pete Lazuran</h3>
       			<h4>Track: C#/.Net</h4>
-      			<br>
-      			<p>lorem ipsum blah blah typing lorem ipsum doesnt work in codepen so here I go writing some random shit. The quick brown fox jumped over the lazy dog.</p>
+            <a href="https://github.com/NaruzaL" target="_blank">
+              <i class="fa fa-github fa-5x" aria-hidden="true"></i>
+              <p>github</p>
+            </a>
       		</div>
       		<div class="developer">
       			<img class="dev-pic" src="img/daniel.jpeg">
       			<h3>Daniel Lopez</h3>
       			<h4>Track: CSS/Design</h4>
-      			<br>
-      			<p>lorem ipsum blah blah typing lorem ipsum doesnt work in codepen so here I go writing some random shit. The quick brown fox jumped over the lazy dog.</p>
+            <a href="https://github.com/DLopez6877" target="_blank">
+              <i class="fa fa-github fa-5x" aria-hidden="true"></i>
+              <p>github</p>
+            </a>
       		</div>
-      		<div class="developer">
-      			<img class="dev-pic" src="img/isabella.png">
-      			<h3>Isabella Abatgis</h3>
-      			<h4>Track: CSS/Design</h4>
-      			<br>
-      			<p>lorem ipsum blah blah typing lorem ipsum doesnt work in codepen so here I go writing some random shit. The quick brown fox jumped over the lazy dog.</p>
-      		</div>
+          <div class="developer">
+            <img class="dev-pic" src="img/isabella.png">
+            <h3>Isabella Abatgis</h3>
+            <h4>Track: CSS/Design</h4>
+            <a href="https://github.com/sigtaba" target="_blank">
+              <i class="fa fa-github fa-5x" aria-hidden="true"></i>
+              <p>github</p>
+            </a>
+          </div>
       	</div>
       </section>
       <a class="scroll-top" href="#nav">Back to Top <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
